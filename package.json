@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/echarts": "^4.9.22"
+    "@types/echarts": "^4.9.22",
+    "cypress": "^13.6.6"
   }
 }
