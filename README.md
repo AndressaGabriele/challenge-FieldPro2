@@ -2,6 +2,9 @@
 
 This repository contains the solution for the technical challenge presented by FieldPro.
 
+- [LIVE PRODUCTION HERE](https://challenge-field-pro2.vercel.app/)
+
+
 ## Description ℹ️
 
 The application is designed to display growth stage data fetched from an API and visualize it using charts. It also provides pagination functionality to navigate through the data.
@@ -24,13 +27,13 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-```bash git clone https://github.com/AndressaGabriele/challenge-FieldPro.git```
+- ```bash git clone https://github.com/AndressaGabriele/challenge-FieldPro.git```
 
 2. Navigate to the project directory:
-```cd challenge-FieldPro```
+- ```cd challenge-FieldPro```
 
 3. Install dependencies:
-```npm install```
+- ```npm install```
 
 ## Usage 🛠️
 
