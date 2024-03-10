@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FormControl, InputLabel, MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
-import '../../App.css'
+import '../App.css'
 import GrowthStage from '../components/GrowthStage';
 
 
