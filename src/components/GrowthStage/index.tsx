@@ -9,6 +9,7 @@ import "echarts/lib/component/legend";
 import "echarts/lib/component/grid";
 
 import { formatDate } from "utils/helpers/dateFormatter";
+import { getAverage } from "utils/helpers/getAverage";
 
 interface DataItem {
   degree_days: number;
@@ -22,19 +23,18 @@ interface Props {
 }
 
 export const GrowthStage: React.FC<Props> = ({ data }) => {
+  const time = data.map((item) => item.time);
+  const degreeDays = data.map((item) => item.degree_days);
+  const precipitation = data.map((item) => item.precipitation);
+  const ndvi = data.map((item) => item.ndvi);
+  const formattedTime = time.map(formatDate);
+
+  const maxAccumumRainfall = Math.max(...precipitation);
+
   useEffect(() => {
     const chart = echarts.init(
       document.getElementById("growth-chart") as HTMLDivElement
     );
-
-    const time = data.map((item) => item.time);
-    const degreeDays = data.map((item) => item.degree_days);
-    const precipitation = data.map((item) => item.precipitation);
-    const ndvi = data.map((item) => item.ndvi);
-    const formattedTime = time.map(formatDate);
-
-    const maxDegreeDays = Math.max(...degreeDays);
-
     chart.setOption({
       color: ["#f19759 "],
       tooltip: {
@@ -45,29 +45,29 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
       },
       grid: {
         left: "9%",
-        top: '30%',
-        height: '60%',
-        width: '80%',
+        top: "30%",
+        height: "60%",
+        width: "80%",
         right: "10%",
         bottom: "30%",
         containLabel: true,
       },
       legend: {
-        data: ["Degree Days", "Precipitation", "NDVI"],
-        icon: 'circle',
+        data: ["Precipitation","Degree Days", "NDVI"],
+        icon: "circle",
         left: "left",
-        orient: 'vertical',
+        orient: "vertical",
         textStyle: {
-          fontSize: 12,
+          fontSize: 12,  
         },
         formatter: (name: string) => {
           switch (name) {
-            case "Degree Days":
-              return `${name}: ${data[0].degree_days}`;
             case "Precipitation":
-              return `${name}: ${data[0].precipitation}`;
+              return `${name}: ${getAverage(precipitation)} mm`;
+            case "Degree Days":
+              return `${name}: ${getAverage(degreeDays)} °C`;
             case "NDVI":
-              return `${name}: ${data[0].ndvi}`;
+              return `${name}: ${getAverage(ndvi)}`;
             default:
               return name;
           }
@@ -85,9 +85,9 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
       yAxis: [
         {
           type: "value",
-          name: "Accumulated Rainfall (mm)",
+          name: "Accumum Rainfall",
           min: 0,
-          max: maxDegreeDays,
+          max: maxAccumumRainfall,
           interval: 5,
           axisLabel: {
             fontSize: 12,
@@ -96,7 +96,7 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
         },
         {
           type: "value",
-          name: "Temperature (°C)",
+          name: "Degree Days",
           min: 0,
           max: 50,
           interval: 5,
@@ -117,14 +117,14 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
       ],
       series: [
         {
-          name: "Degree Days",
+          name: "Precipitation",
           type: "bar",
           barWidth: 40,
           symbol: "none",
           barCategoryGap: "5",
           smooth: true,
           yAxisIndex: 0,
-          data: degreeDays,
+          data: precipitation,
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: "rgb(131,175,226)" },
@@ -134,13 +134,13 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
           },
         },
         {
-          name: "Precipitation",
+          name: "Degree Days",
           type: "line",
           symbol: "none",
           stack: "x",
           smooth: true,
           yAxisIndex: 1,
-          data: precipitation,
+          data: degreeDays,
           encode: {
             x: "Year",
             y: "Income",

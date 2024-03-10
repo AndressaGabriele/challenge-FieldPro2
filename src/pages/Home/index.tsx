@@ -8,7 +8,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import "./styles.css";
-import { GrowthStage } from "components/GrowthStage";
+import { GrowthStage } from "components";
 import { DataItem } from "utils/types/data.type";
 
 export const Home: React.FC = () => {

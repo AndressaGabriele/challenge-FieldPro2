@@ -1,15 +1,14 @@
-import React from "react";
 import {
   Box,
   Toolbar,
   Typography,
   IconButton,
-  FormGroup,
   AppBar,
   PaletteMode,
 } from "@mui/material";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { GiAerialSignal } from "react-icons/gi";
+
 import "./styles.css";
 
 interface IHeder {

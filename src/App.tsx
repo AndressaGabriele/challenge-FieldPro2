@@ -10,7 +10,7 @@ import {
 
 import { router } from "./router";
 
-import { Header } from "./components/Header";
+import { Header } from "./components";
 
 const App: React.FC = () => {
   const [darkMode, setDarkmode] = useState<PaletteMode>("light");
