@@ -2,6 +2,9 @@
 
 This repository contains the solution for the technical challenge presented by FieldPro.
 
+- [LIVE PRODUCTION HERE](https://challenge-field-pro2.vercel.app/)
+
+
 ## Description ℹ️
 
 The application is designed to display growth stage data fetched from an API and visualize it using charts. It also provides pagination functionality to navigate through the data.
