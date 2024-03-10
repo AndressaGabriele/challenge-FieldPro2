@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Home } from "page/Home";
+import { Home } from "pages";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +17,8 @@ export const router = createBrowserRouter(
             <p>Not Found</p>
           </>
         }
-      ></Route>
+      >
+      </Route>
     </>
   )
 );
