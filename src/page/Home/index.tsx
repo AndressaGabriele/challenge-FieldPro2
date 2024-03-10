@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FormControl, InputLabel, MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
-import '../App.css'
-import GrowthStage from '../components/GrowthStage';
+import './styles.css'
+import { GrowthStage } from 'components/GrowthStage';
+import { DataItem } from 'utils/types/data.type';
 
 
-interface DataItem {
-    accum_rainfall: number;
-    degree_days: number;
-    time: number;
-    precipitation: number;
-    ndvi: number;
-}
-
-const Home: React.FC = () => {
+ export const Home: React.FC = () => {
     const [data, setData] = useState<DataItem[]>([]);
     const [page, setPage] = useState({ skip: 0, limite: 5 })
-    const [darkMode, setDarkmode] = useState(false)
 
 
     const pagination = (skip: number, limite: number) => {
@@ -25,9 +17,6 @@ const Home: React.FC = () => {
     const chartData = pagination(page.skip, page.limite)
     const limiteOption = [5, 10, 15, 20]
 
-    const toggleDarkMode = () => {
-        setDarkmode(!darkMode)
-    }
 
 
     useEffect(() => {
@@ -56,7 +45,7 @@ const Home: React.FC = () => {
                 <Pagination color='secondary' count={Math.round(data.length / page.limite)} onChange={(e, v) => setPage({ ...page, skip: +v })} />
                 <div>
                     <FormControl sx={{ m: 1, minWidth: 80, }}>
-                        <InputLabel id="inputLabel" color='secondary'>Age</InputLabel>
+                        <InputLabel id="inputLabel" color='secondary'>View</InputLabel>
                         <Select
                             name="skip"
                             label="skip"
@@ -79,4 +68,3 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;

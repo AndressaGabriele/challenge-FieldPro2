@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { CssBaseline, PaletteMode, ThemeProvider, createTheme } from '@mui/material';
-import './App.css'
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router';
-import Header from './components/Header';
 
+import { RouterProvider } from 'react-router-dom';
+import { CssBaseline, PaletteMode, ThemeProvider, createTheme } from '@mui/material';
+
+import { router } from './router';
+
+import { Header } from './components/Header';
 
 const App: React.FC = () => {
     const [darkMode, setDarkmode] = useState<PaletteMode>("light")
@@ -22,7 +23,7 @@ const App: React.FC = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
+            <CssBaseline/>
             <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <RouterProvider router={router} />
         </ThemeProvider>

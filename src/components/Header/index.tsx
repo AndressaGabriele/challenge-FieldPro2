@@ -1,27 +1,16 @@
-// imports mui
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import FormGroup from '@mui/material/FormGroup';
-import { PaletteMode } from '@mui/material';
-
-// imports react
-import { useState } from 'react';
-import { FaSun } from 'react-icons/fa';
-import { FaMoon } from 'react-icons/fa';
+import React from 'react';
+import {Box, Toolbar, Typography, IconButton, FormGroup, AppBar, PaletteMode} from '@mui/material';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { GiAerialSignal } from "react-icons/gi";
+import './styles.css'
 
 
 interface IHeder {
     darkMode: PaletteMode,
     toggleDarkMode: () => void
 }
-export default function Header({darkMode, toggleDarkMode}: IHeder) {
-    const [auth, setAuth] = useState(true);
+export function Header({darkMode, toggleDarkMode}: IHeder) {
     
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <FormGroup>
@@ -40,7 +29,6 @@ export default function Header({darkMode, toggleDarkMode}: IHeder) {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         FieldPRO
                     </Typography>
-                    {auth && (
                         <div>
                             <IconButton
                                 size="large"
@@ -53,7 +41,7 @@ export default function Header({darkMode, toggleDarkMode}: IHeder) {
                                 {darkMode === 'light' ? <FaSun /> : <FaMoon />}
                             </IconButton>
                         </div>
-                    )}
+                    
                 </Toolbar>
             </AppBar>
         </Box>
