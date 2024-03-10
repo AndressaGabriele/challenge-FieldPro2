@@ -30,6 +30,8 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
   const formattedTime = time.map(formatDate);
 
   const maxAccumumRainfall = Math.max(...precipitation);
+  const maxdegreeDays = Math.max(...degreeDays);
+
 
   useEffect(() => {
     const chart = echarts.init(
@@ -63,9 +65,9 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
         formatter: (name: string) => {
           switch (name) {
             case "Precipitation":
-              return `${name}: ${getAverage(precipitation)} mm`;
+              return `${name}: ${getAverage(precipitation).toFixed()} mm`;
             case "Degree Days":
-              return `${name}: ${getAverage(degreeDays)} °C`;
+              return `${name}: ${getAverage(degreeDays).toFixed()} °C`;
             case "NDVI":
               return `${name}: ${getAverage(ndvi)}`;
             default:
@@ -87,7 +89,7 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
           type: "value",
           name: "Accumum Rainfall",
           min: 0,
-          max: maxAccumumRainfall,
+          max: maxAccumumRainfall+10,
           interval: 5,
           axisLabel: {
             fontSize: 12,
@@ -98,7 +100,7 @@ export const GrowthStage: React.FC<Props> = ({ data }) => {
           type: "value",
           name: "Degree Days",
           min: 0,
-          max: 50,
+          max: maxdegreeDays+10,
           interval: 5,
           axisLabel: {
             fontSize: 12,
