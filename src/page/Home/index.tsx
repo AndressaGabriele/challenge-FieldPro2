@@ -50,9 +50,9 @@ import { DataItem } from 'utils/types/data.type';
                             name="skip"
                             label="skip"
                             color='secondary'
-                            value={String(page.skip)}
+                            value={String(page.limite)}
                             id="option"
-                            onChange={(e: SelectChangeEvent) => setPage({ ...page, limite: +e.target.value, skip: parseInt(e.target.value)})}
+                            onChange={(e: SelectChangeEvent) => setPage({ ...page, limite: +e.target.value})}
                             >
                             {
                                 limiteOption.map((option) => (
