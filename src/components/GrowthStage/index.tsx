@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import * as echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/chart/line';
@@ -6,6 +7,8 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/grid';
+
+import { formatDate } from 'utils/helpers/dateFormatter';
 
 interface DataItem {
     degree_days: number;
@@ -18,7 +21,7 @@ interface Props {
     data: DataItem[];
 }
 
-const GrowthStage: React.FC<Props> = ({ data }) => {
+export const GrowthStage: React.FC<Props> = ({ data }) => {
     useEffect(() => {
         const chart = echarts.init(document.getElementById('growth-chart') as HTMLDivElement);
 
@@ -26,6 +29,7 @@ const GrowthStage: React.FC<Props> = ({ data }) => {
         const degreeDays = data.map(item => item.degree_days);
         const precipitation = data.map(item => item.precipitation);
         const ndvi = data.map(item => item.ndvi);
+        const formattedTime = time.map(formatDate);
 
         const maxDegreeDays = Math.max(...degreeDays);
 
@@ -53,7 +57,7 @@ const GrowthStage: React.FC<Props> = ({ data }) => {
             },
             xAxis: [{
                 type: 'category',
-                data: time,
+                data: formattedTime,
                 axisLabel: {
                     fontSize: 12
                 }
@@ -168,5 +172,3 @@ const GrowthStage: React.FC<Props> = ({ data }) => {
 
     return <div id="growth-chart" style={{ width: '100%', height: '400px', }} />;
 };
-
-export default GrowthStage;
