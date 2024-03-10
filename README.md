@@ -21,6 +21,16 @@ The application is designed to display growth stage data fetched from an API and
 - Material-UI for UI components and styling (Differentiator)
 - Icon integration for enhanced UI (Differentiator)
 
+## Dependencies
+
+- React (18.2)
+- React Icons (5.0.1)
+- React Router DOM (6.22.3)
+- Typescript (4.9.5)
+- Echarts (5.5.0)
+- Mui/material (5.15.12)
+- Node (18.17.1)
+
 ## Installation 🚀
 
 To run this project locally, follow these steps:
