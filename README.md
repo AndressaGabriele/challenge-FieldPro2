@@ -24,13 +24,13 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-```bash git clone https://github.com/AndressaGabriele/challenge-FieldPro.git```
+- ```bash git clone https://github.com/AndressaGabriele/challenge-FieldPro.git```
 
 2. Navigate to the project directory:
-```cd challenge-FieldPro```
+- ```cd challenge-FieldPro```
 
 3. Install dependencies:
-```npm install```
+- ```npm install```
 
 ## Usage 🛠️
 
